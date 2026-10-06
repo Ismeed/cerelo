@@ -1,0 +1,167 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS Custom Properties ───────────────────────────────────────────────── */
+:root {
+  --font-inter: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Color tokens mirroring Tailwind theme — available to raw CSS when needed */
+  --color-navy:         #1A2B4A;
+  --color-navy-deep:    #0E1B30;
+  --color-navy-soft:    #2C4270;
+  --color-orange:       #F4630A;
+  --color-orange-hover: #D9530A;
+  --color-orange-soft:  #FDEEE4;
+
+  --color-surface:      #FAFAFA;
+  --color-surface-white: #FFFFFF;
+  --color-surface-subtle: #F2F4F7;
+
+  --color-border:       #E4E7EC;
+  --color-border-strong:#D0D5DD;
+
+  --color-text-primary: #101828;
+  --color-text-secondary: #475467;
+  --color-text-muted:   #98A2B3;
+
+  /* Focus ring — used globally */
+  --focus-ring: 0 0 0 2px var(--color-orange);
+}
+
+/* ─── Base Resets ─────────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-surface text-text-primary font-sans;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* Prevent horizontal overflow on all viewports */
+    overflow-x: hidden;
+  }
+
+  /* Text selection uses brand orange */
+  ::selection {
+    background-color: #F4630A;
+    color: #FFFFFF;
+  }
+
+  /* Focus visible — consistent across interactive elements */
+  :focus-visible {
+    outline: 2px solid var(--color-orange);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Remove default focus for mouse users */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  /* ─── Typography Base ─────────────────────────────────────────────── */
+  /* Headings: brand navy, tight tracking */
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-text-primary tracking-tight;
+    text-wrap: balance;
+  }
+
+  /* Paragraphs: comfortable line-length constraint */
+  p {
+    max-width: 70ch;
+  }
+
+  /* Links: accessible base */
+  a {
+    @apply text-inherit transition-colors duration-150;
+  }
+
+  /* Prose containers reset the p max-width for layout flexibility */
+  .prose-container p {
+    max-width: none;
+  }
+
+  /* ─── Form Base ───────────────────────────────────────────────────── */
+  input, select, textarea {
+    @apply font-sans;
+    /* iOS prevents zoom on focus if font-size ≥ 16px */
+    font-size: max(16px, 1rem);
+  }
+}
+
+/* ─── Utility Layers ─────────────────────────────────────────────────────── */
+@layer utilities {
+  /* Section vertical padding presets */
+  .py-section {
+    @apply py-12 sm:py-16 lg:py-20;
+  }
+  .py-section-lg {
+    @apply py-16 sm:py-24;
+  }
+  .py-section-sm {
+    @apply py-8 sm:py-12;
+  }
+
+  /* Reading measure for prose content */
+  .reading-width {
+    max-width: 65ch;
+  }
+
+  /* Gradient text — navy to orange — use sparingly */
+  .text-gradient-brand {
+    background: linear-gradient(135deg, #1A2B4A 0%, #F4630A 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Orange underline accent on hover links */
+  .link-orange {
+    @apply text-text-secondary hover:text-cerelo-orange transition-colors duration-150 underline-offset-2;
+  }
+
+  /* Hide from sight but not from screen readers */
+  .sr-only-focusable:not(:focus):not(:focus-within) {
+    @apply sr-only;
+  }
+}
+
+/* ─── Reduced Motion ─────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── Print Styles — for legal/privacy pages ─────────────────────────────── */
+@media print {
+  header,
+  footer,
+  nav,
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+    font-size: 12pt;
+  }
+
+  a[href]::after {
+    content: ' (' attr(href) ')';
+    font-size: 10pt;
+    color: #666;
+  }
+}

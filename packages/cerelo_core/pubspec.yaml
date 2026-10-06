@@ -1,0 +1,17 @@
+name: cerelo_core
+description: Cerelo V1 — Shared domain types, enums, validation, and utilities. Used by both customer_app and personnel_app.
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: '>=3.4.0 <4.0.0'
+
+dependencies:
+  # Immutability annotations
+  meta: ^1.15.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  test: ^1.25.0
+  very_good_analysis: ^6.0.0

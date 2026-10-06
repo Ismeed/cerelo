@@ -1,0 +1,12 @@
+﻿[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.cerelo.customer",
+      "sha256_cert_fingerprints": [
+        "6E:CD:15:D6:D8:E2:17:5F:1B:B9:43:6C:F9:63:FB:28:A9:A8:7C:23:86:FC:44:9A:35:C9:7C:B2:83:11:2C:43"
+      ]
+    }
+  }
+]

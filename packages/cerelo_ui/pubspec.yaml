@@ -1,0 +1,24 @@
+name: cerelo_ui
+description: Cerelo V1 — Shared Flutter design system, brand tokens, and reusable UI widgets.
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: '>=3.4.0 <4.0.0'
+  flutter: '>=3.22.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cerelo_core:
+    path: ../../packages/cerelo_core
+  # Icon set
+  hugeicons: ^0.0.7
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  very_good_analysis: ^6.0.0
+
+flutter:
+  uses-material-design: true

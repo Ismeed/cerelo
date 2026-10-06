@@ -1,0 +1,36 @@
+{
+  "name": "cerelo-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Cerelo V1 — Intercity door-to-door logistics platform (Kano ↔ Katsina)",
+  "scripts": {
+    "dev": "pnpm --filter admin_web dev",
+    "dev:admin": "pnpm --filter admin_web dev",
+    "dev:website": "pnpm --filter website dev",
+    "dev:backend": "supabase start",
+    "build": "pnpm --filter admin_web build && pnpm --filter website build",
+    "build:admin": "pnpm --filter admin_web build",
+    "build:website": "pnpm --filter website build",
+    "lint": "pnpm --filter admin_web lint && pnpm --filter website lint",
+    "lint:website": "pnpm --filter website lint",
+    "typecheck": "pnpm --filter admin_web typecheck && pnpm --filter website typecheck",
+    "typecheck:website": "pnpm --filter website typecheck",
+    "test": "pnpm --filter admin_web test",
+    "db:start": "supabase start",
+    "db:stop": "supabase stop",
+    "db:reset": "supabase db reset",
+    "db:migrate": "supabase migration up",
+    "db:types": "supabase gen types typescript --local > apps/admin_web/lib/database.types.ts",
+    "db:new-migration": "supabase migration new",
+    "deploy:website:staging": "node scripts/deploy_website_staging.js",
+    "deploy:website:production": "node scripts/deploy_website_production.js"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "packageManager": "pnpm@9.12.0"
+}

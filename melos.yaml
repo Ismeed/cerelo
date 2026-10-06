@@ -1,0 +1,45 @@
+name: cerelo
+sdkPath: .dart_tool/flutter_intl/flutter_pub_get
+
+packages:
+  - apps/**
+  - packages/**
+
+command:
+  bootstrap:
+    runPubGetInParallel: true
+
+scripts:
+  analyze:
+    run: melos exec --concurrency=1 -- flutter analyze
+    description: Run Flutter static analysis across all packages and apps.
+
+  test:
+    run: melos exec --fail-fast -- flutter test --coverage
+    description: Run Flutter unit tests across all packages.
+    select-package:
+      flutter: true
+
+  format:
+    run: melos exec -- dart format lib test
+    description: Format all Dart source files.
+
+  format:check:
+    run: melos exec -- dart format lib test --set-exit-if-changed
+    description: Check Dart formatting without modifying files.
+
+  clean:
+    run: melos exec -- flutter clean
+    description: Clean all Flutter build artifacts.
+
+  build:customer_app:
+    run: flutter build apk --debug
+    description: Build customer app debug APK.
+    select-package:
+      scope: customer_app
+
+  build:personnel_app:
+    run: flutter build apk --debug
+    description: Build personnel app debug APK.
+    select-package:
+      scope: personnel_app

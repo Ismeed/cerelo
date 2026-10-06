@@ -1,0 +1,100 @@
+# .gitignore — Cerelo Monorepo
+
+# ─── Environment / Secrets ─────────────────────────────────────────────────
+.env
+.env.local
+.env.production
+.env.staging
+.env.*.local
+*.pem
+*.key
+supabase/.env.local
+supabase/.env.production
+# Flutter dart-define files (contain staging/production API keys)
+**/.dart_define.*.json
+scripts/.worker_secret.tmp
+*.tmp
+
+# ─── OS / IDE ───────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/settings.json
+*.swp
+*.swo
+
+# ─── Flutter / Dart ─────────────────────────────────────────────────────────
+**/build/
+**/.dart_tool/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/.packages
+**/.pub-cache/
+**/.pub/
+**/doc/api/
+*.iml
+local.properties
+# Keep generated files that are tracked (e.g., l10n)
+# But ignore derived output:
+**/generated_plugin_registrant.dart
+
+# Android
+**/android/.gradle/
+**/android/local.properties
+**/android/key.properties
+**/android/app/debug/
+**/android/app/release/
+**/android/app/*.jks
+**/android/app/*.keystore
+**/android/captures/
+
+# iOS
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/Flutter/App.framework
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Flutter.podspec
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/ephemeral/
+**/ios/Runner/GeneratedPluginRegistrant.*
+**/ios/Runner.xcworkspace/
+
+# ─── Node.js / pnpm ─────────────────────────────────────────────────────────
+node_modules/
+.pnpm-store/
+.pnpm-debug.log
+
+# Next.js
+apps/admin_web/.next/
+apps/admin_web/out/
+apps/admin_web/.vercel
+apps/website/.next/
+apps/website/out/
+apps/website/.vercel
+
+# ─── Database / Supabase ────────────────────────────────────────────────────
+supabase/.branches/
+supabase/.temp/
+
+# ─── Test / Coverage ────────────────────────────────────────────────────────
+coverage/
+lcov.info
+*.lcov
+.nyc_output/
+
+# ─── Build Artifacts ────────────────────────────────────────────────────────
+dist/
+*.log
+
+# ─── Certificates ───────────────────────────────────────────────────────────
+*.p8
+*.p12
+*.mobileprovision
+
+# ─── Firebase ───────────────────────────────────────────────────────────────
+google-services.json
+GoogleService-Info.plist
+
+# ─── Kotlin compiler sessions / crash dumps ────────────────────────────────
+**/.kotlin/
+*.stackdump

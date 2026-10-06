@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800&display=swap');
+
+@layer base {
+  :root {
+    --cerelo-navy: #1A2B4A;
+    --cerelo-orange: #F4630A;
+    --cerelo-surface: #FAFAFA;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #FAFAFA;
+    color: #101828;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .cerelo-card {
+    @apply bg-white rounded border border-border shadow-card;
+  }
+
+  .cerelo-badge {
+    @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold;
+  }
+
+  /* Delivery code display */
+  .delivery-code {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    letter-spacing: 0.15em;
+    font-weight: 700;
+    color: var(--cerelo-navy);
+  }
+
+  /* Status badge variants */
+  .badge-info    { @apply cerelo-badge bg-blue-50 text-blue-700; }
+  .badge-warning { @apply cerelo-badge bg-amber-50 text-amber-700; }
+  .badge-success { @apply cerelo-badge bg-green-50 text-green-700; }
+  .badge-error   { @apply cerelo-badge bg-red-50 text-red-700; }
+  .badge-neutral { @apply cerelo-badge bg-gray-100 text-gray-600; }
+}
